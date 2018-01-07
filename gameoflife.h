@@ -104,7 +104,7 @@ void writeMap(Grid map)
 	  if(map[i][j] == ALIVE)
 	    putchar('*');
 	  else
-	    putchat('-');
+	    putchar('-');
 	}
       printf("\n");
     }
