@@ -85,4 +85,16 @@ int neighCount(Grid map, int row, int col)
 }
 void writeMap(Grid map)
 {
+  printf("\n\n");
+  for( int i = 1; i <= MAXROW; i++)
+    {
+      for( int j = 0; j <= MAXCOL; j++)
+	{
+	  if(map[i][j] == ALIVE)
+	    putchar('*');
+	  else
+	    putchat('-');
+	}
+      printf("\n");
+    }
 }
