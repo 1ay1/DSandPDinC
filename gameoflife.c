@@ -1,4 +1,4 @@
-#include "algo.h"
+#include "gameoflife.h"
 
 int main()
 {
