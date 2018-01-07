@@ -16,14 +16,25 @@ void writeMap(Grid map);
 
 void CopyMap(Grid map, Grid newMap)
 {
+  for( int i = 0; i <= MAXROW +1 ; i ++)
+    {
+      for( int j = 0; j <= MAXCOL +1; j++)
+	{
+	  map[i][j] = newMap[i][j];
+	}
+    }
 }
 
 Boolean userSaysYes()
 {
-  while(1) {
-    if(getchar() == 'y') return 1;
-    else return 0;
-  }
+  int c;
+  printf("(y,n)?\n");
+  do {
+    while((c = getchar()) == '\n') ;
+    if(c == 'y' || c =='Y' || c == 'n' || c == 'N')
+      return ( c== 'y' || c== 'Y');
+    printf("Please respond by typing one of the letters y or n!\n");
+  } while (1);
 }
 
 // the initialization function, will ask the user which cells are alive initially
