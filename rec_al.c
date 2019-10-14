@@ -29,6 +29,10 @@ char * f_string(char *s) {
     return r;
 } 
 
+void nothing(){
+    
+}
+
 
 int main() {
     char *ch = get_new_string();
