@@ -1,3 +1,5 @@
+//using recursion to find the correctness of an algebraic expression
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
