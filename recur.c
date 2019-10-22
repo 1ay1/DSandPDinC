@@ -29,9 +29,26 @@ void insert ( struct queue * qu, int item) {
         return;
     }
 
-    (qu->rear++);
+    if(is_empty(qu)) {
+        qu->items[qu->rear] = item;
+        qu->rear = (qu->rear + 1) % MAXITEMS;
+        return;
+    } 
+
+    for(int i = (qu->front)%MAXITEMS; i != (qu->rear)%MAXITEMS; i = (i + 1) % MAXITEMS) {
+        if( item <= qu->items[i]) {
+            for(int j = qu->rear -1; j%MAXITEMS != (i-1)%MAXITEMS; j = (j -1) %MAXITEMS){
+                qu->items[j+1] = qu->items[j];
+            }
+            qu->rear = (qu->rear + 1) % MAXITEMS;
+            qu->items[qu->front] = item;
+            break;
+        }
+    }
+
+    /* (qu->rear++);
     qu->rear = qu->rear % MAXITEMS;
-    qu->items[qu->rear] = item;
+    qu->items[qu->rear] = item; */
 }
 
 int removeq (struct queue *qu) {
@@ -39,9 +56,9 @@ int removeq (struct queue *qu) {
         return EXIT_FAILURE;
     }
     
-    qu->front++;
-    qu->front = qu->front % MAXITEMS;
-    return qu->items[qu->front];
+    int val = qu->items[qu->front];
+    qu->front = (qu->front + 1)%MAXITEMS;
+    return val;
 } 
 
 int main() {
