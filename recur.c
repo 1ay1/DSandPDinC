@@ -35,16 +35,19 @@ void insert ( struct queue * qu, int item) {
         return;
     } 
 
-    for(int i = (qu->front)%MAXITEMS; i != (qu->rear)%MAXITEMS; i = (i + 1) % MAXITEMS) {
-        if( item <= qu->items[i]) {
-            for(int j = qu->rear -1; j%MAXITEMS != (i-1)%MAXITEMS; j = (j -1) %MAXITEMS){
-                qu->items[j+1] = qu->items[j];
+    for(int i = qu->front; i != qu->rear; i = (i +1)%MAXITEMS) {
+        if(item < qu->items[i]) {
+            for(int j = qu->rear; j != i; j = (j - 1) %MAXITEMS) {
+                qu->items[j] = qu->items[(j-1)%MAXITEMS];
             }
+            qu->items[i] = item;
             qu->rear = (qu->rear + 1) % MAXITEMS;
-            qu->items[qu->front] = item;
-            break;
+            return;
         }
     }
+
+    qu->items[qu->rear] = item;
+    qu->rear = (qu->rear + 1)% MAXITEMS;
 
     /* (qu->rear++);
     qu->rear = qu->rear % MAXITEMS;
