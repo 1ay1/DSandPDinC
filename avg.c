@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+#include <stdio.h>
+
+int get_int() {
+    int i, s_n;
+    while ((s_n = scanf("%d", &i)) != 1)
+    {
+        puts("Enter a valid number!");
+    }
+    
+    return i;
+}
+
+int main() {
+    int sum = 0;
+
+    for(int i = 0; i < 5; i++) {
+        sum += get_int();
+    }
+
+    printf("Sum: %d\n", sum); 
+
+    return 0;    
+}
+=======
 //prefix to postfix using recursion
 #include <stdio.h>
 #include <string.h>
@@ -120,3 +145,4 @@ int main() {
 
     return 0;
 }
+>>>>>>> 8a2096383b7ab5ada9f5087186f0e09d48bccee1
