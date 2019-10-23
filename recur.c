@@ -42,7 +42,7 @@ void insert ( struct queue * qu, int item) {
             }
             qu->rear = (qu->rear + 1) % MAXITEMS;
             qu->items[qu->front] = item;
-            break;
+            return;
         }
     }
 
